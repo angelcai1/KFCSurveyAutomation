@@ -32,6 +32,13 @@ def surveyCode(code, time):
     inputbox = Select(driver.find_element(By.NAME, "InputMeridian"))
     inputbox.select_by_value (meridian)
     
+    try:
+        link = driver.find_element(By.ID, "NextButton")
+        link.click()
+    except selenium.common.exceptions.NoSuchElementException:
+        print("Wrong survey code")
+        driver.quit()
+    
 def main():
     # code = "S7200740330222361"
     # time = "01:06 PM"
